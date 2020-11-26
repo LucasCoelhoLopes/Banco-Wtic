@@ -177,7 +177,9 @@ def tratar_extrato(usuario):
     with open(DIRETORIO_EXTRATO) as extrato_txt:
         for line in extrato_txt:
             print(line, end = '')
+            
 
+#Verifico se a senha digita é a senha verdadeira
 def tratar_senha(usuario, senha):
     DIRETORIO_SENHA = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\senha.txt'
 
@@ -196,7 +198,8 @@ def tratar_novo_usuario(usuario, novo_usuario):
     
     if len(usuario) <= 1 or ' ' in usuario:
         return False
-
+    
+    #Tento renomear a pasta do novo usuário e caso algum caracter inválido - Exemplo: ?* - esteja no usuário retorno False
     try:
         os.rename(DIRETORIO_USUARIO, DIRETORIO_NOVO_USUARIO)
         return True
@@ -221,4 +224,4 @@ def encerrar_conta(usuario):
     import shutil 
     DIRETORIO_USUARIO = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}'
 
-    shutil.rmtree(DIRETORIO_USUARIO)
+    shutil.rmtree(DIRETORIO_USUARIO) #Apago a pasta do usuário
