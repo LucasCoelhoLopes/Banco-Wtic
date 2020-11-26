@@ -8,7 +8,8 @@ def tratar_opcao(opcao):
 
     else:
         return False
-
+    
+#Verifico se nome e sobrenome foi digitado
 def tratar_nome(nome):
     nome_separado = nome.split(' ')
 
@@ -101,13 +102,13 @@ def criar_usuario(nome, data, cpf, usuario):
         return False 
 
 def tratar_usuario(nome, data, cpf, usuario):
-    diretorio_principal = 'C:\\Python Projects\\Banco Wtic\\Usuários'
+    DIRETORIO_PRINCIPAL = 'C:\\Python Projects\\Banco Wtic\\Usuários'
     
     if len(usuario) <= 1 or ' ' in usuario:
         return False
 
     try:
-        os.mkdir(diretorio_principal)
+        os.mkdir(DIRETORIO_PRINCIPAL)
         criar_usuario(nome, data, cpf, usuario)
         return True
 
@@ -129,9 +130,9 @@ def tratar_senha(senha, usuario):
         return False
     
     else:
-        arquivo_txt_senha = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\senha.txt'
+        ARQUIVO_TXT_SENHA = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\senha.txt'
 
-        arquivo = open(arquivo_txt_senha, 'w')
+        arquivo = open(ARQUIVO_TXT_SENHA, 'w')
         arquivo.write(senha)
         arquivo.close()
         
