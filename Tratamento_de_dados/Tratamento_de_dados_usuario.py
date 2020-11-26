@@ -16,6 +16,7 @@ def tratar_login(usuario, senha):
     except FileNotFoundError:
         return False
 
+#Retorna o nome real do usuário atual
 def tratar_nome_real(usuario):
     DIRETORIO_NOME_REAL = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\nome.txt'
 
@@ -24,6 +25,7 @@ def tratar_nome_real(usuario):
 
     return nome_real
 
+#Retorna o saldo do usuário atual
 def tratar_saldo(usuario):
     DIRETORIO_SALDO = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\saldo.txt'
 
@@ -31,8 +33,9 @@ def tratar_saldo(usuario):
         saldo = saldo_txt.readline()
         return saldo
 
+#Verifica se o número dado é float
 def tratar_numero_float(valor):
-    ponto = 0
+    ponto = 0 #Se o número tiver mais de um ponto retorna como False
 
     if len(valor) == 0:
         return False 
@@ -108,6 +111,7 @@ def tratar_tranferencia(valor_transferencia, usuario_transferencia, usuario_nome
     valor_transferencia = float(valor_transferencia)
     usuario_nome = usuario_nome.title()
     
+    #Tento abrir os arquvios do usuário que receberá a transeferencia e, caso ele não exista, retorno False
     try:
         DIRETORIO_NOME = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario_transferencia}\\nome.txt'
         DIRETORIO_CPF = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario_transferencia}\\cpf.txt'
@@ -121,7 +125,8 @@ def tratar_tranferencia(valor_transferencia, usuario_transferencia, usuario_nome
         if usuario_nome.title() == nome_real and usuario_cpf == cpf_real:
             DIRETORIO_TRANSFERE_SALDO = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\saldo.txt' #O que está transferindo
             DIRETORIO_RECEBEBE_SALDO = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario_transferencia}\\saldo.txt' #O que está recebendo
-
+            
+            #Pego o valor do saldo de quem está transferindo
             with open(DIRETORIO_TRANSFERE_SALDO) as saldo_txt:
                 valor_saldo = saldo_txt.readline()
                 valor_saldo = float(valor_saldo)
@@ -192,9 +197,12 @@ def tratar_novo_usuario(usuario, novo_usuario):
     if len(usuario) <= 1 or ' ' in usuario:
         return False
 
-    else:
+    try:
         os.rename(DIRETORIO_USUARIO, DIRETORIO_NOVO_USUARIO)
         return True
+    
+    except OSError:
+        return False
 
 def tratar_nova_senha(usuario, nova_senha):
     if len(nova_senha) <= 1 or ' ' in nova_senha:
