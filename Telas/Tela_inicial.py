@@ -5,7 +5,7 @@ def tela_inicial():
 
     os.system('cls')
 
-    print('Seja Bem-vindo ao Banco Wtic!\n')
+    print('Seja Bem-vindo(a) ao Banco Wtic!\n')
     print('O que deseja fazer?')
     print('1 - Login    2 - Cadastro    3 - Sair\n')
     

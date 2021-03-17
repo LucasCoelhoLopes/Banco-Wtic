@@ -6,7 +6,7 @@ def operacoes_Bancarias(usuario, nome_real):
     os.system('cls')
     print(f'Banco Wtic - Usuário atual: {usuario}\n')
     print('Digite "Voltar" para retornar ao menu anterior.\n')
-    print(f'Bem-vindo {nome_real}! Qual operação deseja realizar?')
+    print(f'Bem-vindo(a) {nome_real}! Qual operação deseja realizar?')
     print('1 - Depósito    2 - Saque    3 - Transferência    4 - Extrato')
     opcao = input('Opcao: ')
 

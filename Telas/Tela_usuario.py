@@ -9,7 +9,7 @@ def tela_usuario(usuario):
     os.system('cls')
     print(f'Banco Wtic - Usuário atual: {usuario}\n')
     print('Digite "Voltar" para retornar ao menu anterior.\n')
-    print(f'Bem-vindo {nome_real}! O que deseja fazer?')
+    print(f'Bem-vindo(a) {nome_real}! O que deseja fazer?')
     print('1 - Operações Bancárias  2 - Configurações do usuário')
     
     opcao = input('Opção: ')
