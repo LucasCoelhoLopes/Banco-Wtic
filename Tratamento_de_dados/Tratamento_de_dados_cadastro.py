@@ -8,8 +8,7 @@ def tratar_opcao(opcao):
 
     else:
         return False
-    
-#Verifico se nome e sobrenome foi digitado
+
 def tratar_nome(nome):
     nome_separado = nome.split(' ')
 
@@ -75,11 +74,11 @@ def tratar_cpf(cpf):
         return True
 
 def criar_usuario(nome, data, cpf, usuario):
-    diretorio_usuario = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}'
+    diretorio_usuario = f'Usuários\\{usuario}'
     
-    arquivo_txt_nome = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\nome.txt'
-    arquivo_txt_data = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\data.txt'
-    arquivo_txt_cpf = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\cpf.txt'
+    arquivo_txt_nome = f'Usuários\\{usuario}\\nome.txt'
+    arquivo_txt_data = f'Usuários\\{usuario}\\data.txt'
+    arquivo_txt_cpf = f'Usuários\\{usuario}\\cpf.txt'
 
     try:
         os.mkdir(diretorio_usuario)
@@ -102,13 +101,13 @@ def criar_usuario(nome, data, cpf, usuario):
         return False 
 
 def tratar_usuario(nome, data, cpf, usuario):
-    DIRETORIO_PRINCIPAL = 'C:\\Python Projects\\Banco Wtic\\Usuários'
+    nome_pasta_usuarios = 'Usuários'
     
     if len(usuario) <= 1 or ' ' in usuario:
         return False
 
     try:
-        os.mkdir(DIRETORIO_PRINCIPAL)
+        os.mkdir(nome_pasta_usuarios)
         criar_usuario(nome, data, cpf, usuario)
         return True
 
@@ -130,16 +129,16 @@ def tratar_senha(senha, usuario):
         return False
     
     else:
-        ARQUIVO_TXT_SENHA = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\senha.txt'
+        arquivo_txt_senha = f'Usuários\\{usuario}\\senha.txt'
 
-        arquivo = open(ARQUIVO_TXT_SENHA, 'w')
+        arquivo = open(arquivo_txt_senha, 'w')
         arquivo.write(senha)
         arquivo.close()
         
         return True
 
 def tratar_saldo_inical(usuario):
-    DIRETORIO_SALDO = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\saldo.txt'
+    DIRETORIO_SALDO = f'Usuários\\{usuario}\\saldo.txt'
     SALDO_INICIAL = '0'
 
     arquivo = open(DIRETORIO_SALDO, 'w')
@@ -147,7 +146,7 @@ def tratar_saldo_inical(usuario):
     arquivo.close
 
 def tratar_extrato_incial(usuario):
-    DIRETORIO_EXTRATO = f'C:\\Python Projects\\Banco Wtic\\Usuários\\{usuario}\\extrato.txt'
+    DIRETORIO_EXTRATO = f'Usuários\\{usuario}\\extrato.txt'
     EXTRATO_INICIAL = 'Histórico de transações:\n'
 
     arquivo = open(DIRETORIO_EXTRATO, 'w')
